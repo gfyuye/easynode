@@ -32,10 +32,7 @@ jobs:
           file: ./Dockerfile
           push: true
           platforms: linux/amd64,linux/arm64
-          tags: >
-            gfyuye/easynode:${{ github.event.release.tag_name || inputs.tag_name }}
-
-            gfyuye/easynode:latest
+          tags: gfyuye/easynode:latest
       - name: Logout from Azure Container Registry
         if: always()
         run: docker logout gyuye.azurecr.io
