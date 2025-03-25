@@ -33,8 +33,12 @@ jobs:
         push: true
         platforms: linux/amd64,linux/arm64
         tags: |
-          chaoszhu/easynode:${{ github.event.release.tag_name || inputs.tag_name }}
-          chaoszhu/easynode:latest
+          gfyuye/easynode:${{ github.event.release.tag_name || inputs.tag_name }}
+          gfyuye/easynode:latest
 
     # - name: Clean up post-build
     #   run: docker system prune -af
+   - name: Logout from Azure Container Registry
+     if: always()  # 无论成功或失败都执行这一步以确保安全登出
+     run: docker logout gyuye.azurecr.io
+
