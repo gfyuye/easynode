@@ -1,5 +1,4 @@
 name: Build Server to DockerHub
-
 on:
   branches:
     - main   # 或者你想要自动触发的分支
@@ -38,9 +37,7 @@ jobs:
           gfyuye/easynode:${{ github.event.release.tag_name || inputs.tag_name }}
           gfyuye/easynode:latest
 
-    # - name: Clean up post-build
-    #   run: docker system prune -af
-   - name: Logout from Azure Container Registry
+    - name: Logout from Azure Container Registry
      if: always()  # 无论成功或失败都执行这一步以确保安全登出
      run: docker logout gyuye.azurecr.io
 
