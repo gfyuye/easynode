@@ -1,6 +1,8 @@
 name: Build Server to DockerHub
 
 on:
+    branches:
+      - main   # 或者你想要自动触发的分支
   release:
     types: [published]
   workflow_dispatch:
